@@ -20,7 +20,7 @@
     text-align: center;
 }
 
-.admin-wrap > .muted {
+.admin-wrap>.muted {
     text-align: center;
 }
 
@@ -154,7 +154,8 @@
     background: var(--input-bg);
     border: 1.5px solid var(--line-strong);
     border-radius: var(--radius-field);
-    font-size: 16px; /* evita zoom automático no iPhone */
+    font-size: 16px;
+    /* evita zoom automático no iPhone */
 }
 
 .admin-field input:focus,
@@ -215,10 +216,23 @@
     background: var(--line-strong);
 }
 
-.login-senha-wrap { display: flex; align-items: stretch; gap: 8px; }
-    .login-senha-wrap input { flex: 1; min-width: 0; }
+.login-senha-wrap {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+}
 
-    .btn-mostrar-senha { flex: 0 0 auto; padding: 0 12px; cursor: pointer;  border-radius: 8px; min-height: 40px;
+.login-senha-wrap input {
+    flex: 1;
+    min-width: 0;
+}
+
+.btn-mostrar-senha {
+    flex: 0 0 auto;
+    padding: 0 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    min-height: 40px;
     margin: 2px;
     padding: 8px 14px;
     color: var(--text-secondary);
@@ -226,10 +240,26 @@
     border-radius: 8px;
     font-size: 0.85rem;
     font-weight: 700;
-    cursor: pointer; }
+    cursor: pointer;
+}
 
-    .btn-esqueci-senha { display: block; margin: 12px auto 0; padding: 6px 4px; border: 0; background: transparent; color: inherit; text-decoration: underline; cursor: pointer; }
-    .btn-mostrar-senha:focus-visible, .btn-esqueci-senha:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.btn-esqueci-senha {
+    display: block;
+    margin: 12px auto 0;
+    padding: 6px 4px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.btn-mostrar-senha:focus-visible,
+.btn-esqueci-senha:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
+
 /* ---------- Status ---------- */
 
 .status-pill {
@@ -549,6 +579,11 @@
         box-shadow: var(--card-shadow);
     }
 
+    /* Respeita o filtro de busca e oculta cartões não correspondentes */
+    .admin-table tr[hidden] {
+        display: none !important;
+    }
+
     .admin-table tbody tr:hover {
         background: var(--card-bg);
     }
@@ -626,15 +661,34 @@
     }
 
     /* Rótulos de cada coluna — Inscrições */
-    #tabela-inscricoes td:nth-child(2)::before { content: "Grupo"; }
-    #tabela-inscricoes td:nth-child(3)::before { content: "Valor previsto"; }
-    #tabela-inscricoes td:nth-child(4)::before { content: "Pagamento"; }
-    #tabela-inscricoes td:nth-child(5)::before { content: "Inscrição"; }
+    #tabela-inscricoes td:nth-child(2)::before {
+        content: "Grupo";
+    }
+
+    #tabela-inscricoes td:nth-child(3)::before {
+        content: "Valor previsto";
+    }
+
+    #tabela-inscricoes td:nth-child(4)::before {
+        content: "Pagamento";
+    }
+
+    #tabela-inscricoes td:nth-child(5)::before {
+        content: "Inscrição";
+    }
 
     /* Rótulos de cada coluna — Despesas */
-    #tabela-despesas td:nth-child(2)::before { content: "Categoria"; }
-    #tabela-despesas td:nth-child(3)::before { content: "Valor"; }
-    #tabela-despesas td:nth-child(4)::before { content: "Comprovante"; }
+    #tabela-despesas td:nth-child(2)::before {
+        content: "Categoria";
+    }
+
+    #tabela-despesas td:nth-child(3)::before {
+        content: "Valor";
+    }
+
+    #tabela-despesas td:nth-child(4)::before {
+        content: "Comprovante";
+    }
 
     /* Cor da borda do cartão conforme o status */
     #tabela-inscricoes tr:has(.status-paid) {
@@ -679,7 +733,7 @@
         grid-template-columns: minmax(0, 1fr) auto;
     }
 
-    .acompanhante-item > :first-child {
+    .acompanhante-item> :first-child {
         grid-column: 1 / -1;
     }
 
@@ -698,6 +752,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
