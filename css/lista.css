@@ -28,53 +28,70 @@
     margin-top: 20px;
 }
 
+
 /* ---------- Contador de confirmados ---------- */
 
 .contador-confirmados {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     margin-bottom: 24px;
-    padding: 24px 16px;
-    color: #fff;
-    background: linear-gradient(135deg, #F4511E 0%, #FF7043 100%);
-    border: 1px solid var(--primary-hover);
+    padding: 28px 16px;
+    background: #FFF8F1;
+    border: 2px solid #FFE0CC;
     border-radius: var(--radius-card);
-    box-shadow: 0 8px 22px rgba(255, 87, 34, 0.28);
     text-align: center;
 }
 
 .contador-confirmados.meta-atingida {
-    background: linear-gradient(135deg, #00838F 0%, #00ACC1 100%);
-    border-color: var(--accent-hover);
-    box-shadow: 0 8px 22px rgba(0, 172, 193, 0.30);
+    background: #EFFBFA;
+    border-color: #B2E5E2;
 }
 
 .contador-legenda {
-    color: rgba(255, 255, 255, 0.92);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #E64A19;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.contador-legenda::before,
+.contador-legenda::after {
+    content: "";
+    width: 20px;
+    height: 2px;
+    background: #FFC107;
+    border-radius: 2px;
 }
 
 #total-confirmados {
-    color: #fff;
+    color: #F4511E;
     font-family: var(--font-display);
-    font-size: clamp(2.4rem, 8vw, 3.4rem);
+    font-size: clamp(3rem, 10vw, 4rem);
     font-weight: 800;
-    line-height: 1.1;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.meta-atingida .contador-legenda,
+.meta-atingida #total-confirmados {
+    color: #008C95;
 }
 
 .contador-descricao {
-    color: rgba(255, 255, 255, 0.95);
+    color: #59636B;
     font-size: 0.95rem;
+    font-weight: 500;
 }
 
 #contador-confirmados[hidden] {
     display: none !important;
 }
+
 
 /* ---------- Card de inscrição ---------- */
 

@@ -5,7 +5,38 @@
  */
 
 
+/* ---------- Contador de confirmados ---------- */
 
+
+function animarContador(elemento, total) {
+    const duracao = 1200;
+    const inicio = performance.now();
+
+    function atualizar(agora) {
+        const progresso = Math.min((agora - inicio) / duracao, 1);
+
+        // Suaviza a animação até chegar ao valor final.
+        const suavizacao = 1 - Math.pow(1 - progresso, 3);
+
+        const valorAtual = Math.max(
+            1,
+            Math.floor(suavizacao * total)
+        );
+
+        elemento.textContent =
+            `${valorAtual} `;
+
+        if (progresso < 1) {
+            requestAnimationFrame(atualizar);
+        } else {
+            // Garante que o valor final seja exatamente o do banco.
+            elemento.textContent =
+                `${total} `;
+        }
+    }
+
+    requestAnimationFrame(atualizar);
+}
 
 async function atualizarContadorConfirmados() {
     const contador = document.getElementById("total-confirmados");
@@ -13,7 +44,6 @@ async function atualizarContadorConfirmados() {
 
     if (!contador || !contadorSection) return;
 
-    // Mantém o contador oculto até confirmar o total.
     contadorSection.hidden = true;
 
     try {
@@ -29,11 +59,12 @@ async function atualizarContadorConfirmados() {
             throw new Error("Total de confirmados inválido.");
         }
 
-        contador.textContent =
-            `${total} ${total === 1 ? "pessoa" : "pessoas"}`;
-
         // Só exibe o contador a partir de 20 pessoas.
         contadorSection.hidden = total < 20;
+
+        if (total >= 20) {
+            animarContador(contador, total);
+        }
 
     } catch (error) {
         console.error("Erro ao carregar contador:", error);
@@ -41,9 +72,7 @@ async function atualizarContadorConfirmados() {
     }
 }
 
-
-
-
+/* ---------- Carregar lista pública ---------- */
 async function carregarListaPublica() {
     const container = document.getElementById("lista-alunos-container");
     if (!container) return;
